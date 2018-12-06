@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BlogApp</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+  <style type="text/css" href="./style.css"></style>
+
+  <!--    jQuery 3.x    -->
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+
+  <!--    Materialize.css   -->
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+</head>
+
+
+<nav class="#2e7d32 green darken-3">
+  <div class="nav-wrapper">
+    <a href="/" class="brand-logo">BlogApp</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+      <% if user_signed_in? %>
+        <!--        when signed in-->
+        <li>
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+        </li>
+        <li>
+          <%= link_to "New post", "/posts/new" %>
+        </li>
+      <% else %>
+        <!--        when signed out-->
+        <li>
+          <%= link_to "Sign In", new_user_session_path %>
+        </li>
+        <li>
+          <%= link_to "Sign Up", new_user_registration_path %>
+        </li>
+      <% end %>
+
+    </ul>
+  </div>
+</nav>
+
+
+<body>
+  <%= yield %>
+</body>
+</html>
