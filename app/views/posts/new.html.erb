@@ -1,0 +1,10 @@
+<div class="row">
+  <%= form_with model: @posts, url: "/posts/create", local: true do |f| %>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.text_area :text, class: "materialize-textarea", placeholder: 'contents' %>
+      </div>
+      <%= f.submit value: "POST", class: "waves-effect waves-light btn" %>
+    </div>
+  <% end %>
+</div>

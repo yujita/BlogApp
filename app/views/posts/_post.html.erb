@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col s12 m6">
+    <div class="card green lighten-5">
+      <div class="card-content black-text">
+
+        <span class="card-title"><%= post.title %></span>
+        <div class="chip">
+          <img src="/assets/nico.png">
+          <%= post.user.nickname %>
+        </div>
+
+        <p><%= post.text %></p>
+      </div>
+      <div class="card-action">
+        <%= link_to "SHOW", "/posts/#{post.id}", method: :get, class: "waves-effect waves-light btn" %>
+        <% if user_signed_in? && post.user_id == current_user.id %>
+          <%= link_to "EDIT", "/posts/#{post.id}/edit", method: :get, class: "waves-effect waves-light btn" %>
+          <%= link_to "DESTROY", "/posts/#{post.id}", method: :delete, class: "waves-effect waves-light btn" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
