@@ -1,6 +1,12 @@
 <div class="row">
   <%= form_with model: @post, url: "/posts/#{@post.id}", method: :patch, local: true do |f| %>
     <div class="row">
+
+      <div class="input-field col s12">
+        <%= f.text_field :title, class: "materialize-textarea", placeholder: 'title' %>
+      </div>
+
+
       <div class="input-field col s12">
         <%= f.text_area :text, class: "materialize-textarea", placeholder: 'contents' %>
       </div>
