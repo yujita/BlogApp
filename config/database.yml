@@ -49,6 +49,10 @@ test:
 #
 production:
   <<: *default
+  adapter: mysql2
+  encoding: utf8
   database: blogapp_production
-  username: blogapp
+  username: <%= ENV['BLOGAPP_DATABASE_USER'] %>
   password: <%= ENV['BLOGAPP_DATABASE_PASSWORD'] %>
+  host: <%= ENV['BLOGAPP_DATABASE_HOST'] %>
+  port: 3306
