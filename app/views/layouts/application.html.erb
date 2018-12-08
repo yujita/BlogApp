@@ -24,38 +24,59 @@
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
+
+  <!--  Using icons of Materialize.css-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
 
-<nav class="#2e7d32 green darken-3">
-  <div class="nav-wrapper">
-    <a href="/" class="brand-logo">BlogApp</a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
+<div class="navbar-fixed">
+  <nav class="#2e7d32 green darken-3">
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo center">BlogApp</a>
 
-      <% if user_signed_in? %>
-        <!--        when signed in-->
-        <li>
-          <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-        </li>
-        <li>
-          <%= link_to "New post", "/posts/new" %>
-        </li>
-      <% else %>
-        <!--        when signed out-->
-        <li>
-          <%= link_to "Sign In", new_user_session_path %>
-        </li>
-        <li>
-          <%= link_to "Sign Up", new_user_registration_path %>
-        </li>
-      <% end %>
+      <!--for PC-->
+<!--      <ul id="nav-mobile" class="right hide-on-med-and-down">-->
+      <ul id="nav-mobile" class="right">
+        <% if user_signed_in? %>
+          <!--        when signed in-->
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="material-icons left">directions_run</i>Sign Out
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "/posts/new" do %>
+              <i class="material-icons left">create</i>New post
+            <% end %>
+          </li>
+        <% else %>
+          <!--        when signed out-->
+          <li>
+            <%= link_to new_user_session_path  do %>
+              <i class="material-icons left">exit_to_app</i>Sign In
+            <% end %>
+          </li>
 
-    </ul>
-  </div>
-</nav>
+          <li>
+            <%= link_to new_user_registration_path do %>
+              <i class="material-icons left">person_add</i>Sign Up
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+
+    </div>
+  </nav>
+</div>
 
 
 <body>
+<div class="container">
   <%= yield %>
+</div>
 </body>
+
+
 </html>
