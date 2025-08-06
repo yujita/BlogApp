@@ -16,17 +16,16 @@ class PostsController < ApplicationController
   def update
     post = Post.find(params[:id])
     if post.user_id == current_user.id
-      post.update(title: post_params[:title], text: post_params[:text])
+      post.update(post_params)
     end
   end
 
   def new
-    @posts = Post.new
+    @post = Post.new
   end
 
   def create
-#    Post.create(text: params[:post][:text], user_id: current_user.id)
-    Post.create(title: post_params[:title], text: post_params[:text], user_id: current_user.id) if user_signed_in?
+    Post.create(post_params.merge(user_id: current_user.id)) if user_signed_in?
   end
 
   def destroy
@@ -38,7 +37,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params[:post].permit(:title, :text)
+    params.require(:post).permit(:title, :text)
   end
 
 end
