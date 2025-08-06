@@ -1,5 +1,5 @@
 <div class="row">
-  <%= form_with model: @posts, url: "/posts/create", local: true do |f| %>
+  <%= form_with model: @post, url: "/posts/create", local: true do |f| %>
     <div class="row">
       <div class="input-field col s12">
         <%= f.text_field :title, class: "materialize-textarea", placeholder: 'title' %>
